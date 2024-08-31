@@ -12,3 +12,17 @@ npx hardhat init
 
 ▎۳. نوشتن قرارداد هوشمند
 یک فایل جدید با پسوند .sol در پوشه contracts ایجاد کنید.مثل MyContract.sol:
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract MyContract {
+    string public name;
+
+    constructor(string memory _name) {
+        name = _name;
+    }
+
+    function setName(string memory _name) public {
+        name = _name;
+    }
+}
