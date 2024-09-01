@@ -26,3 +26,31 @@ contract MyContract {
         name = _name;
     }
 }
+
+
+
+
+▎۴. کامپایل قرارداد
+برای کامپایل کردن قرارداد، از دستور زیر استفاده کنید:
+
+npx hardhat compile
+
+
+▎۵. نوشتن اسکریپت‌های مهاجرت
+در پوشه scripts، یک فایل جدید ایجاد کنید (مثلاً deploy.js) و کد زیر را اضافه کنید:
+
+async function main() {
+    const MyContract = await ethers.getContractFactory("MyContract");
+    const myContract = await MyContract.deploy("Initial Name");
+
+    await myContract.deployed();
+    console.log("Contract deployed to:", myContract.address);
+}
+
+main()
+    .then(() => process.exit(0))
+    .catch((error) => {
+        console.error(error);
+        process.exit(1);
+    });
+
