@@ -54,3 +54,24 @@ main()
         process.exit(1);
     });
 
+
+▎۶. اتصال به شبکه Base
+در فایل hardhat.config.js، تنظیمات شبکه Base را اضافه کنید:
+
+require('@nomiclabs/hardhat-waffle');
+
+module.exports = {
+    solidity: "0.8.0",
+    networks: {
+        base: {
+            url: "https://base.network/rpc", // آدرس RPC شبکه Base
+            accounts: [0x${YOUR_PRIVATE_KEY}] // کلید خصوصی شما
+        }
+    }
+};
+
+
+▎۷. اجرای اسکریپت مهاجرت
+برای استقرار قرارداد بر روی شبکه Base، از دستور زیر استفاده کنید:
+
+npx hardhat run scripts/deploy.js --network base
